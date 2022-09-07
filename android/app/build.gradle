@@ -79,7 +79,7 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
+    enableHermes: true,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -92,7 +92,7 @@ apply from: "../../node_modules/react-native/react.gradle"
  * Upload all the APKs to the Play Store and people will download
  * the correct one based on the CPU architecture of their device.
  */
-def enableSeparateBuildPerCPUArchitecture = false
+def enableSeparateBuildPerCPUArchitecture = true
 
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
@@ -133,7 +133,11 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
-
+    //for watermelon db
+//     packagingOptions {
+//      pickFirst '**/libc++_shared.so' // ⬅️ This (if missing)
+//   }
+    //end watermelon db
     defaultConfig {
         applicationId "com.expensetracker"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -209,7 +213,7 @@ android {
             }
         }
     }
-
+    
     splits {
         abi {
             reset()
@@ -258,7 +262,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-
+    //for watermelon db
+    // implementation project(':watermelondb-jsi')
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 

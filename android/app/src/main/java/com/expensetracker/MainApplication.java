@@ -13,6 +13,14 @@ import com.expensetracker.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+// //for watermelon
+// import java.util.Arrays; 
+// import com.facebook.react.bridge.JSIModuleSpec; 
+// import com.facebook.react.bridge.JSIModulePackage;
+// import com.facebook.react.bridge.ReactApplicationContext;
+// import com.facebook.react.bridge.JavaScriptContextHolder;
+// import com.nozbe.watermelondb.jsi.WatermelonDBJSIPackage; 
+
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
@@ -36,7 +44,23 @@ public class MainApplication extends Application implements ReactApplication {
           return "index";
         }
       };
+//for watermelon db jsi module
+// @Override
+//      protected JSIModulePackage getJSIModulePackage() {
+//        return new JSIModulePackage() {
+//          @Override
+//          public List<JSIModuleSpec> getJSIModules(
+//            final ReactApplicationContext reactApplicationContext,
+//            final JavaScriptContextHolder jsContext
+//          ) {
+//            List<JSIModuleSpec> modules = Arrays.asList();
 
+//            modules.addAll(new WatermelonDBJSIPackage().getJSIModules(reactApplicationContext, jsContext)); 
+
+//            return modules;
+//          }
+//        };
+//      }
   private final ReactNativeHost mNewArchitectureNativeHost =
       new MainApplicationReactNativeHost(this);
 

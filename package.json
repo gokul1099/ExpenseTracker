@@ -11,6 +11,7 @@
     "cli": "node cli.js"
   },
   "dependencies": {
+    "@nozbe/watermelondb": "^0.24.0",
     "@react-navigation/bottom-tabs": "^6.3.3",
     "@react-navigation/native": "^6.0.12",
     "@react-navigation/native-stack": "^6.8.0",
@@ -20,12 +21,14 @@
     "fs": "^0.0.1-security",
     "react": "18.0.0",
     "react-native": "0.69.5",
+    "react-native-bundle-visualizer": "^3.1.1",
     "react-native-safe-area-context": "^4.3.3",
     "react-native-screens": "^3.17.0",
     "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@babel/plugin-proposal-decorators": "^7.18.10",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
     "@tsconfig/react-native": "^2.0.2",
