@@ -32,9 +32,9 @@ const AppStack = () => {
 
             })}
             initialRouteName="home">
-            <Stack.Screen name="home" component={HomeScreen} />
-            <Stack.Screen name="transaction" component={TransactionsScreen} />
-            <Stack.Screen name="profile" component={ProfileScreen} />
+            <Stack.Screen name="home" component={HomeScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="transaction" component={TransactionsScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="profile" component={ProfileScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
 
     )

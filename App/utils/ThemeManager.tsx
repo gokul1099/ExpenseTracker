@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Theme } from '../theme/palette'';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Theme } from '../theme/palette'
 const STORAGE_KEY = 'THEME_ID';
 interface ContextType {
     themeID: string,
@@ -12,8 +12,7 @@ export const ThemeContextProvider = ({ children }: any) => {
     const [themeID, setThemeID] = useState<string>("");
     useEffect(() => {
         (async () => {
-            // const storedThemeID = await AsyncStorage.getItem(STORAGE_KEY);
-            const storedThemeID = "LIGHT"
+            const storedThemeID = await AsyncStorage.getItem(STORAGE_KEY);
             if (storedThemeID) {
                 setThemeID(storedThemeID);
             } else {

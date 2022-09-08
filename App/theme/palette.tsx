@@ -5,7 +5,8 @@ export const Theme = {
         red: "#FD3C4A",
         green: "#00A86B",
         yellow: "#FCAC12",
-        blue: "#0077FF"
+        blue: "#0077FF",
+
     },
     DARK: {
         primary: "white",
