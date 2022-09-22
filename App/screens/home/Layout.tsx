@@ -21,7 +21,7 @@ const Layout: React.FC<Props> = props => {
           <View><CustomText text={"$ 4500"} variant={"secondary"} /></View>
         </View>
       </View>
-      <View style={{ flex: 0.3 }}>
+      <View style={{ flex: 0.3, marginTop: "5%" }}>
         <View style={styles.transactType}>
           <View style={{ flex: 0.5, borderWidth: 1 }}>
             <TransactType type="Income" />

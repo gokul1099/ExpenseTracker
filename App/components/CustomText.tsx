@@ -5,7 +5,7 @@ import SYSTEM from "../theme"
 interface CustomTextProps {
     variant?: "primary" | "secondary" | "tertiary"
     text: String,
-    type: String,
+    type?: String,
 }
 
 const CustomText = ({ text, variant, type }: CustomTextProps) => {

@@ -26,18 +26,16 @@ const Styles = (theme: any) => (StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         borderWidth: 1,
-        margin: "10%",
         borderRadius: 15
     },
     iconWrap: {
-        flex: 0.4,
-        height: 30,
+        flex: 0.3,
+        height: 10,
         width: 50,
         borderRadius: 25,
         opacity: 0.2,
         justifyContent: "center",
         alignItems: "center",
-
     }
 }))
 export default TransactType

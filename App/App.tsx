@@ -3,16 +3,19 @@ import { SafeAreaView, initialWindowMetrics, SafeAreaProvider } from "react-nati
 import { AppNavigator } from "./navigators/app-navigator"
 import { ErrorBoundary } from "./screens/error/ErrorBoundary"
 import { ThemeContextProvider } from "./utils/ThemeManager"
+import { GestureHandlerRootView } from "react-native-gesture-handler"
 const App = () => {
   return (
-    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <ErrorBoundary catchError={"always"}>
-        <ThemeContextProvider>
-          <AppNavigator />
-        </ThemeContextProvider>
-      </ErrorBoundary>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <ErrorBoundary catchError={"always"}>
+          <ThemeContextProvider>
+            <AppNavigator />
+          </ThemeContextProvider>
+        </ErrorBoundary>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
 
-    </SafeAreaProvider>
   )
 }
 
