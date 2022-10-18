@@ -1,8 +1,8 @@
-import React from "react"
-import Layout from "./Layout"
+import React from "react";
+import Layout from "./Layout";
 
-interface IProps { }
+interface IProps {}
 
 export function TransactionsScreen(props: IProps) {
-    return <Layout {...props} />
+  return <Layout {...props} />;
 }

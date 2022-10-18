@@ -1,22 +1,22 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React from "react";
+import {View, Text, StyleSheet} from "react-native";
 
-interface Props { }
+interface Props {}
 
 const Layout: React.FC<Props> = props => (
-    <View style={styles.container}>
-        <Text style={{ fontSize: 30 }}> Profile </Text>
-    </View>
-)
+  <View style={styles.container}>
+    <Text style={{fontSize: 30}}> Profile </Text>
+  </View>
+);
 
-Layout.defaultProps = {}
+Layout.defaultProps = {};
 
 const styles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-        flex: 1,
-        justifyContent: 'center',
-    },
-})
+  container: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+  },
+});
 
-export default Layout
+export default Layout;

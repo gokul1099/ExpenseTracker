@@ -1,26 +1,22 @@
-
-
-import React, { useContext } from "react"
-import { ThemeContext } from "../utils/ThemeManager"
-import { Theme } from "../theme/palette"
+import React, {useContext} from "react";
+import {ThemeContext} from "../utils/ThemeManager";
+import {Theme} from "../theme/palette";
 
 const useGetTheme = () => {
-    const { themeID, setThemeID } = useContext(ThemeContext)
-    const getTheme = (themeID: string) => {
-        return Theme.themeID
+  const {themeID, setThemeID} = useContext(ThemeContext);
+  const getTheme = (themeID: string) => {
+    return Theme.themeID;
+  };
+  const getAppTheme = (themeId: string) => {
+    const theme = getTheme(themeId);
+    if (theme) {
+      return {...theme};
+    } else {
+      return {...Theme["LIGHT"]};
     }
-    const getAppTheme = (themeId: string) => {
-        var theme = getTheme(themeId);
-        if (theme) {
-            return { ...theme };
-        }
-        else {
-            return { ...Theme['LIGHT'] }
-        }
+  };
 
-    };
+  return getAppTheme(themeID);
+};
 
-    return getAppTheme(themeID)
-}
-
-export default useGetTheme
+export default useGetTheme;

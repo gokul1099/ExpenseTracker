@@ -1,27 +1,25 @@
-import React from "react"
+import React from "react";
 
-import AntDesign from "react-native-vector-icons/AntDesign"
+import AntDesign from "react-native-vector-icons/AntDesign";
 interface IconProps {
-    type: String,
-    name: String,
-    size: Number,
-    color: String,
+  type: string;
+  name: string;
+  size: number;
+  color: string;
 }
 
 const Icons = (props: IconProps) => {
-    const { type, name, color, size } = props
+  const {type, name, color, size} = props;
 
-    const getIcon = (type: String) => {
-        switch (type) {
-            case 'antdesign':
-                return AntDesign
+  const getIcon = (type: string) => {
+    switch (type) {
+      case "antdesign":
+        return AntDesign;
+    }
+  };
 
-        }
-    };
+  const IconType = getIcon(type);
+  return <IconType name={name} color={color} size={size} />;
+};
 
-    const IconType = getIcon(type)
-    return <IconType name={name} color={color} size={size} />
-
-}
-
-export default Icons
+export default Icons;
