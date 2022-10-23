@@ -1,9 +1,9 @@
 import React from "react";
 import {SafeAreaView, initialWindowMetrics, SafeAreaProvider} from "react-native-safe-area-context";
-import {AppNavigator} from "./navigators/app-navigator";
-import {ErrorBoundary} from "./screens/error/ErrorBoundary";
 import {ThemeContextProvider} from "./utils/ThemeManager";
 import {GestureHandlerRootView} from "react-native-gesture-handler";
+import {ErrorBoundary} from "./screens/error/ErrorBoundary";
+import {AppNavigator} from "./navigators/app-navigator";
 const App = () => {
   return (
     <GestureHandlerRootView style={{flex: 1}}>

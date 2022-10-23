@@ -21,6 +21,10 @@ const Layout: React.FC<Props> = props => {
   const navigation = useNavigation();
   const styles = Styles(theme);
 
+  const onClick = () => {
+    navigation.navigate("AddTransaction", {type: "Expense"});
+  };
+
   return (
     <View style={{flex: 1, padding: "5%", backgroundColor: theme.primary}}>
       <View style={styles.header}>
@@ -48,7 +52,7 @@ const Layout: React.FC<Props> = props => {
       </View>
       <View style={{flex: 0.5}}>
         <View style={styles.recentTitle}>
-          <Button title="add" />
+          <Button title="add" onPress={() => onClick()} />
           <CustomText text="Recent Transactions" variant={"primary"} />
           <TouchableOpacity onPress={() => navigation.navigate("transaction")}>
             <CustomText text="View All" variant={"tertiary"} />

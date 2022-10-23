@@ -1,19 +1,20 @@
 import React from "react";
-import {View, StyleSheet} from "react-native";
+import { View, StyleSheet } from "react-native";
 import SYSTEM from "../theme";
 import CustomText from "./CustomText";
 import Icons from "../utils/Icons";
 import useSelectTheme from "../hooks/useSelectTheme";
+
 interface TypeProps {
   type: string;
 }
-const TransactType = ({type}: TypeProps) => {
+const TransactType = ({ type }: TypeProps) => {
   const theme = useSelectTheme();
   const styles = Styles(theme);
   return (
     <View style={styles.container}>
       <View
-        style={[styles.iconWrap, {backgroundColor: type === "Income" ? theme.green : theme.red}]}>
+        style={[styles.iconWrap, { backgroundColor: type === "Income" ? theme.green : theme.red }]}>
         <Icons
           type={"antdesign"}
           name={type == "Income" ? "arrowdown" : "arrowup"}
@@ -21,10 +22,10 @@ const TransactType = ({type}: TypeProps) => {
           color={type === "Income" ? theme.green : theme.red}
         />
       </View>
-      <View style={{flex: 0.2}}>
+      <View style={{ flex: 0.2 }}>
         <CustomText text={type} type="tertiary" />
       </View>
-      <View style={{flex: 0.2}}>
+      <View style={{ flex: 0.2 }}>
         <CustomText text={"1234"} type="tertiary" />
       </View>
     </View>
@@ -49,4 +50,6 @@ const Styles = (theme: any) =>
       alignItems: "center",
     },
   });
+
+
 export default TransactType;
