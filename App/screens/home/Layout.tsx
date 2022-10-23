@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity, ScrollView, Button } from "react-native";
+import { View, StyleSheet, TouchableOpacity, ScrollView, Button, SafeAreaView } from 'react-native';
 import SYSTEM from "../../theme";
 import CustomText from "../../components/CustomText";
 import TransactType from "../../components/TransactType";
@@ -7,9 +7,9 @@ import useSelectTheme from "../../hooks/useSelectTheme";
 import TrasactItem from "../../components/TrasactItem";
 import { useNavigation } from "@react-navigation/core";
 import database from "../../db";
-import * as TransactionUtils from "../../utils/db/utils"
-import { useDatabase } from '@nozbe/watermelondb/hooks';
 import withObservables from "@nozbe/with-observables";
+import { Q } from "@nozbe/watermelondb";
+import { desc } from "@nozbe/watermelondb/QueryDescription";
 export type RootStackParamList = {
   YourScreen: string
 };
@@ -22,20 +22,9 @@ const Layout: React.FC<Props> = props => {
   const theme = useSelectTheme();
   const navigation = useNavigation()
   const styles = Styles(theme);
-  const db = useDatabase()
-  console.log(props.transactions, "prop")
-  //get date from db
-  const transactionsCollection = database.get("transactions").query()
-  console.log(transactionsCollection?.collection, "collection")
+
   const onClick = () => {
-    const date = new Date().toLocaleDateString()
-    TransactionUtils.addTransactions(
-      "test",
-      "income",
-      date,
-      "1000",
-      db
-    )
+    navigation.navigate("AddTransaction", { type: "Expense" })
   }
 
   return (
@@ -108,6 +97,9 @@ const Styles = (theme: any) =>
   });
 
 const enhance = withObservables([], () => ({
-  transactions: database.collections.get("transactions").query().observe()
+  transactions: database.collections.get("transactions").query(
+    Q.sortBy("created_at", desc),
+    Q.take(5)
+  ).observe(),
 }))
 export default enhance(Layout);
