@@ -1,27 +1,26 @@
-import { View, Text, StyleSheet } from "react-native";
+import {View, Text, StyleSheet} from "react-native";
 import React from "react";
 import Icons from "../utils/Icons";
 import useGetTheme from "../hooks/useSelectTheme";
 import SYSTEM from "../theme/index";
-import withObservables from "@nozbe/with-observables"
+import withObservables from "@nozbe/with-observables";
 interface TransactItemProps {
   item: any;
 }
 const TrasactItem = (props: TransactItemProps) => {
-  console.log(props.item._raw, "item")
   const theme = useGetTheme();
-  const { spacing } = SYSTEM;
+  const {spacing} = SYSTEM;
   const Style = Styles(spacing, props.item.type);
   return (
-    <View key={props.item.id} style={{ flex: 0.6 }}>
+    <View key={props.item.id} style={{flex: 0.6}}>
       <View style={Style.itemContainer}>
-        <View style={{ flex: 0.12 }}>
+        <View style={{flex: 0.12}}>
           <Text>
             <Icons type={"antdesign"} name="pluscircleo" size={30} color={theme.Icons} />
           </Text>
         </View>
-        <View style={{ flex: 0.68 }}>
-          <View style={{ flex: 1 }}>
+        <View style={{flex: 0.68}}>
+          <View style={{flex: 1}}>
             <View>
               <Text style={Style.text}>{props.item.title}</Text>
             </View>
@@ -30,7 +29,7 @@ const TrasactItem = (props: TransactItemProps) => {
             </View>
           </View>
         </View>
-        <View style={{ flex: 0.2 }}>
+        <View style={{flex: 0.2}}>
           <Text style={Style.text}>{props.item.type}</Text>
         </View>
       </View>
@@ -51,12 +50,12 @@ const Styles = (spacing: any, type: string) => {
       borderRadius: 15,
     },
     text: {
-      color: type === "Income" ? "green" : "red"
-    }
+      color: type === "Income" ? "green" : "red",
+    },
   });
-}
+};
 
-const enhance = withObservables(["transactions"], ({ transaction }) => ({
-  transaction
-}))
-export default TrasactItem
+const enhance = withObservables(["transactions"], ({transaction}) => ({
+  transaction,
+}));
+export default TrasactItem;
