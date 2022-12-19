@@ -1,5 +1,5 @@
 import React from "react";
-import {View, StyleSheet, TouchableOpacity, ScrollView, Button} from "react-native";
+import {View, StyleSheet, TouchableOpacity, ScrollView, Button, SafeAreaView} from "react-native";
 import SYSTEM from "../../theme";
 import CustomText from "../../components/CustomText";
 import TransactType from "../../components/TransactType";
@@ -7,6 +7,7 @@ import useSelectTheme from "../../hooks/useSelectTheme";
 import TrasactItem from "../../components/TrasactItem";
 import {useNavigation} from "@react-navigation/core";
 
+import {FloatingButton} from "../../components/FloatingButton";
 export type RootStackParamList = {
   YourScreen: string;
 };
@@ -20,10 +21,6 @@ const Layout: React.FC<Props> = props => {
   const {spacing, typography, fontSize} = SYSTEM;
   const navigation = useNavigation();
   const styles = Styles(theme);
-
-  const onClick = () => {
-    navigation.navigate("AddTransaction", {type: "Expense"});
-  };
 
   return (
     <View style={{flex: 1, padding: "5%", backgroundColor: theme.primary}}>
@@ -52,20 +49,20 @@ const Layout: React.FC<Props> = props => {
       </View>
       <View style={{flex: 0.5}}>
         <View style={styles.recentTitle}>
-          <Button title="add" onPress={() => onClick()} />
           <CustomText text="Recent Transactions" variant={"primary"} />
           <TouchableOpacity onPress={() => navigation.navigate("transaction")}>
             <CustomText text="View All" variant={"tertiary"} />
           </TouchableOpacity>
         </View>
         <ScrollView style={{}} scrollEventThrottle={16} showsVerticalScrollIndicator={false}>
-          {/* <View style={{flex: 1}}>
-            {props.transactions.map(item => {
+          <View style={{flex: 1}}>
+            {/* {props?.transactions?.map(item => {
               return <TrasactItem item={item._raw} key={item.id} />;
-            })}
-          </View> */}
+            })} */}
+          </View>
         </ScrollView>
       </View>
+      <FloatingButton />
     </View>
   );
 };

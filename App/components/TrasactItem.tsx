@@ -7,7 +7,6 @@ interface TransactItemProps {
   item: any;
 }
 const TrasactItem = (props: TransactItemProps) => {
-  console.log(props.item._raw, "item");
   const theme = useGetTheme();
   const {spacing} = SYSTEM;
   const Style = Styles(spacing, props.item.type);
