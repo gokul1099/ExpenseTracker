@@ -3,11 +3,11 @@ import React from "react";
 import Icons from "../utils/Icons";
 import useGetTheme from "../hooks/useSelectTheme";
 import SYSTEM from "../theme/index";
-import withObservables from "@nozbe/with-observables";
 interface TransactItemProps {
   item: any;
 }
 const TrasactItem = (props: TransactItemProps) => {
+  console.log(props.item._raw, "item");
   const theme = useGetTheme();
   const {spacing} = SYSTEM;
   const Style = Styles(spacing, props.item.type);
@@ -25,7 +25,7 @@ const TrasactItem = (props: TransactItemProps) => {
               <Text style={Style.text}>{props.item.title}</Text>
             </View>
             <View>
-              <Text style={Style.text}>{props.item.date}</Text>
+              <Text style={Style.text}>{new Date(props.item.created_at).toLocaleDateString()}</Text>
             </View>
           </View>
         </View>

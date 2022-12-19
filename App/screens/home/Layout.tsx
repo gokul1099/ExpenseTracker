@@ -15,36 +15,6 @@ const H_MIN_HEIGHT = 52;
 const H_SCROLL_DISTANCE = H_MAX_HEIGHT - H_MIN_HEIGHT;
 
 interface Props {}
-const data = [
-  {
-    id: 1,
-    type: "Expense",
-    amount: "20.00",
-    date: new Date().toLocaleDateString(),
-    title: "Online Shopping",
-  },
-  {
-    id: 2,
-    type: "Income",
-    amount: "20.00",
-    date: new Date().toLocaleDateString(),
-    title: "Online Shopping",
-  },
-  {
-    id: 3,
-    type: "Income",
-    amount: "20.00",
-    date: new Date().toLocaleDateString(),
-    title: "Online Shopping",
-  },
-  {
-    id: 4,
-    type: "Expense",
-    amount: "20.00",
-    date: new Date().toLocaleDateString(),
-    title: "Online Shopping",
-  },
-];
 const Layout: React.FC<Props> = props => {
   const theme = useSelectTheme();
   const {spacing, typography, fontSize} = SYSTEM;
@@ -85,11 +55,11 @@ const Layout: React.FC<Props> = props => {
           </TouchableOpacity>
         </View>
         <ScrollView style={{}} scrollEventThrottle={16} showsVerticalScrollIndicator={false}>
-          <View style={{flex: 1}}>
-            {data?.map(item => {
-              return <TrasactItem item={item} key={item.id} />;
+          {/* <View style={{flex: 1}}>
+            {props.transactions.map(item => {
+              return <TrasactItem item={item._raw} key={item.id} />;
             })}
-          </View>
+          </View> */}
         </ScrollView>
       </View>
     </View>
