@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import {View, StyleSheet, SafeAreaView, Pressable} from "react-native";
 import CustomText from "../../components/CustomText";
 import {InputContainer} from "../../components/InputContainer";
@@ -9,6 +9,9 @@ import useSelectTheme from "../../hooks/useSelectTheme";
 import {useForm} from "../../hooks/useForm";
 import {TextInput} from "react-native-gesture-handler";
 import {Button} from "../../components/Button";
+import {TransactionContext} from "../../db";
+const {useRealm} = TransactionContext;
+
 interface Props {
   route: RouteProp<{params: {type: string}}, "params">;
   navigation: NavigationProp<any, any>;
@@ -19,7 +22,8 @@ const Layout = ({route, navigation}: Props) => {
   const [type, setType] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
-  const [data, setData] = useState<string>(new Date().getDate().toString());
+  const realm = useRealm();
+  const [data, setData] = useState<Date>(new Date());
   const typeData = [
     {
       id: 1,
@@ -30,9 +34,18 @@ const Layout = ({route, navigation}: Props) => {
       option: "Expense",
     },
   ];
-  const onContinue = () => {
-    addTransactions(description, type, data, amount, db);
-  };
+
+  const onContinue = useCallback(() => {
+    realm.write(() => {
+      realm.create("Transactions", {
+        _id: new Realm.BSON.ObjectID(),
+        type,
+        amount: Number(amount),
+        desc: description,
+        createdAt: new Date(),
+      });
+    });
+  }, [realm]);
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: "red"}}>

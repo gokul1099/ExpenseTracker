@@ -6,14 +6,10 @@ import TransactType from "../../components/TransactType";
 import useSelectTheme from "../../hooks/useSelectTheme";
 import TrasactItem from "../../components/TrasactItem";
 import {useNavigation} from "@react-navigation/core";
-
 import {FloatingButton} from "../../components/FloatingButton";
-export type RootStackParamList = {
-  YourScreen: string;
-};
-const H_MAX_HEIGHT = 15;
-const H_MIN_HEIGHT = 52;
-const H_SCROLL_DISTANCE = H_MAX_HEIGHT - H_MIN_HEIGHT;
+import {TransactionContext} from "../../db";
+const {useQuery} = TransactionContext;
+import {Transaction} from "../../db/model/TransactionModel";
 
 interface Props {}
 const Layout: React.FC<Props> = props => {
@@ -22,48 +18,61 @@ const Layout: React.FC<Props> = props => {
   const navigation = useNavigation();
   const styles = Styles(theme);
 
+  const data = useQuery(Transaction);
+  console.log(data, "data");
+
   return (
-    <View style={{flex: 1, padding: "5%", backgroundColor: theme.primary}}>
-      <View style={styles.header}>
-        <CustomText type="medium" text="My Wallet" variant="primary" />
-      </View>
-      <View style={[{flex: 0.2}]}>
-        <View style={styles.totalIncomeContainer}>
-          <View>
-            <CustomText text={"Total Balance"} variant={"secondary"} />
-          </View>
-          <View>
-            <CustomText text={"$ 4500"} variant={"secondary"} />
+    <>
+      <View style={{flex: 1, padding: "5%", backgroundColor: theme.primary}}>
+        <View style={styles.header}>
+          <CustomText type="medium" text="My Wallet" variant="primary" />
+        </View>
+        <View style={[{flex: 0.2}]}>
+          <View style={styles.totalIncomeContainer}>
+            <View>
+              <CustomText text={"Total Balance"} variant={"secondary"} />
+            </View>
+            <View>
+              <CustomText text={"$ 4500"} variant={"secondary"} />
+            </View>
           </View>
         </View>
-      </View>
-      <View style={{flex: 0.3, marginTop: "5%"}}>
-        <View style={[styles.transactType]}>
-          <View style={{flex: 0.49}} key="income">
-            <TransactType type="Income" />
-          </View>
-          <View style={{flex: 0.49}} key="expense">
-            <TransactType type="Expense" />
+        <View style={{flex: 0.3, marginTop: "5%"}}>
+          <View style={[styles.transactType]}>
+            <View style={{flex: 0.49}} key="income">
+              <TransactType type="Income" />
+            </View>
+            <View style={{flex: 0.49}} key="expense">
+              <TransactType type="Expense" />
+            </View>
           </View>
         </View>
-      </View>
-      <View style={{flex: 0.5}}>
-        <View style={styles.recentTitle}>
-          <CustomText text="Recent Transactions" variant={"primary"} />
-          <TouchableOpacity onPress={() => navigation.navigate("transaction")}>
-            <CustomText text="View All" variant={"tertiary"} />
-          </TouchableOpacity>
-        </View>
-        <ScrollView style={{}} scrollEventThrottle={16} showsVerticalScrollIndicator={false}>
-          <View style={{flex: 1}}>
-            {/* {props?.transactions?.map(item => {
-              return <TrasactItem item={item._raw} key={item.id} />;
-            })} */}
+        <View style={{flex: 0.5}}>
+          <View style={styles.recentTitle}>
+            <CustomText text="Recent Transactions" variant={"primary"} />
+            <TouchableOpacity onPress={() => navigation.navigate("transaction")}>
+              <CustomText text="View All" variant={"tertiary"} />
+            </TouchableOpacity>
           </View>
-        </ScrollView>
+          <ScrollView style={{}} scrollEventThrottle={16} showsVerticalScrollIndicator={false}>
+            <View style={{flex: 1}}>
+              {data?.map(item => {
+                return (
+                  <TrasactItem
+                    _id={item._id}
+                    amount={item.amount}
+                    createdAt={item.createdAt}
+                    desc={item.desc}
+                    type={item.type}
+                  />
+                );
+              })}
+            </View>
+          </ScrollView>
+        </View>
+        <FloatingButton />
       </View>
-      <FloatingButton />
-    </View>
+    </>
   );
 };
 
