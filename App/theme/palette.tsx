@@ -1,46 +1,106 @@
-// export const Theme = {
-//     LIGHT: {
-//         primary: "white",
-//         secondary: "#850E35",
-//         red: "#FD3C4A",
-//         green: "#00A86B",
-//         yellow: "#FCAC12",
-//         blue: "#FFC4C4",
-//         textColor1: "black",
-//         icon: "#EE6983"
-
-//     },
-//     DARK: {
-//         primary: "black",
-//         secondary: "#850E35",
-//         red: "#FD3C4A",
-//         green: "#00A86B",
-//         yellow: "#FCAC12",
-//         blue: "#FFC4C4",
-//         textColor: "white",
-//         icon: "#EE6983"
-//     }
-// }
-
 export const Theme = {
-  LIGHT: {
-    primary: "white",
-    secondary: "#7F8487",
-    red: "#7F8487",
-    green: "#7F8487",
-    yellow: "#7F8487",
-    blue: "#7F8487",
+  DARK: {
+    dark: {
+      dark25: "#7A7E80",
+      dark50: "#464A4D",
+      dark75: "#161719",
+      dark100: "#0D0E0F",
+    },
+    light: {
+      light25: "#E3E5E5",
+      light50: "#F2F4F5",
+      light75: "#F7F9FA",
+      light80: "#FBFBFB",
+      light100: "#FFFFFF",
+    },
+    primary: {
+      violet100: "#7F3DFF",
+      violet80: "#8F57FF",
+      violet60: "#B18AFF",
+      violet40: "#D3BDFF",
+      violet20: "#EEE5FF",
+    },
+    red: {
+      red100: "#FD3C4A",
+      red80: "#FD5662",
+      red60: "#FD6F7A",
+      red40: "#FDA2A9",
+      red20: "#FDD5D7",
+    },
+    green: {
+      green100: "#00A86B",
+      green80: "#2AB784",
+      green60: "#65D1AA",
+      green40: "#93EACA",
+      green20: "#CFFAEA",
+    },
+    yellow: {
+      yellow100: "#FCAC12",
+      yellow80: "#FCBB3C",
+      yellow60: "#FCCC6F",
+      yellow40: "#FCDDA1",
+      yellow20: "#FCEED4",
+    },
+    blue: {
+      yellow100: "#0077FF",
+      yellow80: "#248AFF",
+      yellow60: "#57A5FF",
+      yellow40: "#8AC0FF",
+      yellow20: "#BDDCFF",
+    },
     textColor1: "black",
     icon: "#7F8487",
   },
-  DARK: {
-    primary: "black",
-    secondary: "#850E35",
-    red: "#FD3C4A",
-    green: "#00A86B",
-    yellow: "#FCAC12",
-    blue: "#FFC4C4",
-    textColor: "white",
-    icon: "#EE6983",
+  LIGHt: {
+    dark: {
+      dark25: "#7A7E80",
+      dark50: "#464A4D",
+      dark75: "#161719",
+      dark100: "#0D0E0F",
+    },
+    light: {
+      light25: "#E3E5E5",
+      light50: "#F2F4F5",
+      light75: "#F7F9FA",
+      light80: "#FBFBFB",
+      light100: "#FFFFFF",
+    },
+    primary: {
+      violet100: "#7F3DFF",
+      violet80: "#8F57FF",
+      violet60: "#B18AFF",
+      violet40: "#D3BDFF",
+      violet20: "#EEE5FF",
+    },
+    red: {
+      red100: "#FD3C4A",
+      red80: "#FD5662",
+      red60: "#FD6F7A",
+      red40: "#FDA2A9",
+      red20: "#FDD5D7",
+    },
+    green: {
+      green100: "#00A86B",
+      green80: "#2AB784",
+      green60: "#65D1AA",
+      green40: "#93EACA",
+      green20: "#CFFAEA",
+    },
+    yellow: {
+      yellow100: "#FCAC12",
+      yellow80: "#FCBB3C",
+      yellow60: "#FCCC6F",
+      yellow40: "#FCDDA1",
+      yellow20: "#FCEED4",
+    },
+    blue: {
+      yellow100: "#0077FF",
+      yellow80: "#248AFF",
+      yellow60: "#57A5FF",
+      yellow40: "#8AC0FF",
+      yellow20: "#BDDCFF",
+    },
+    textColor1: "black",
+    icon: "#7F8487",
   },
 };
