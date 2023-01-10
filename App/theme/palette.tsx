@@ -48,10 +48,11 @@ export const Theme = {
       yellow40: "#8AC0FF",
       yellow20: "#BDDCFF",
     },
-    textColor1: "black",
+    textPrimary: "#fff",
+    textSecondary: "#7F3DFF",
     icon: "#7F8487",
   },
-  LIGHt: {
+  LIGHT: {
     dark: {
       dark25: "#7A7E80",
       dark50: "#464A4D",
@@ -100,7 +101,8 @@ export const Theme = {
       yellow40: "#8AC0FF",
       yellow20: "#BDDCFF",
     },
-    textColor1: "black",
+    textPrimary: "#fff",
+    textSecondary: "#7F3DFF",
     icon: "#7F8487",
   },
 };

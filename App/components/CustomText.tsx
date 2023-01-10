@@ -1,38 +1,34 @@
 import React from "react";
-import {Text} from "react-native";
+import {StyleSheet, Text, TextStyle} from "react-native";
 import SYSTEM from "../theme";
 import useSelectTheme from "../hooks/useSelectTheme";
 interface CustomTextProps {
-  variant?: "primary" | "secondary" | "tertiary";
+  variant: "primary" | "secondary";
   text: string;
-  type?: string;
 }
 
-const CustomText = ({text, variant, type}: CustomTextProps) => {
+const CustomText = ({text, variant}: CustomTextProps) => {
   const {fontSize, typography} = SYSTEM;
   const theme = useSelectTheme();
 
-  const primary = {
+  const primary: TextStyle = StyleSheet.flatten({
     fontFamily: typography.RobotoBold,
     fontSize: fontSize.xxl,
     fontWeight: "bold",
-    color: theme.textColor1,
+    color: theme.textPrimary,
+  });
+  const secondary: TextStyle = {
+    fontFamily: typography.RobotoMedium,
+    fontSize: fontSize.xl,
+    fontWeight: "bold",
+    color: theme.textSecondary,
   };
-  const secondary = {
-    fontFamily: typography.RobotoBold,
-    fontSize: fontSize.xxl,
-    color: theme.primary,
-  };
-  const tertiary = {
-    fontFamily: typography.RobotoBold,
-    fontSize: fontSize.xxl,
-    color: theme.tertiary,
-  };
-  return (
-    <Text style={variant == "primary" ? primary : variant == "secondary" ? secondary : tertiary}>
-      {text}
-    </Text>
-  );
+  console.log(variant);
+  return <Text style={variant === "primary" ? primary : secondary}>{text}</Text>;
 };
+
+const style = StyleSheet.create({
+  primary: {},
+});
 
 export default CustomText;

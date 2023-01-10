@@ -8,6 +8,7 @@ interface ButtonType {
   type: "primary" | "secondary";
   leftIcon?: string;
   rightIcon?: string;
+  size: "lg" | "sm";
   action: () => void;
 }
 
@@ -15,19 +16,23 @@ interface IconCompType {
   name: string;
 }
 
-export function Button({title, action, type, rightIcon, leftIcon}: ButtonType) {
+export function Button({title, action, type, rightIcon, leftIcon, size}: ButtonType) {
   const theme = useSelectTheme();
-  // const bgColor = type === "primary" ? theme.violet.violet100 : theme.violet.violet20;
-  console.log(theme, "theme");
+  const bgColor = type === "primary" ? theme.primary.violet100 : theme.primary.violet20;
   const IconComp = ({name}: IconCompType) => {
     return <Icons name={name} size={20} type="antdesign" color="black" />;
   };
+
   return (
-    <Pressable onPress={() => action()} android_ripple={{color: "green"}}>
-      <View style={style.btnContainer}>
+    <Pressable onPress={() => action()}>
+      <View
+        style={[
+          style.btnContainer,
+          {backgroundColor: bgColor, width: size === "lg" ? "100%" : "50%"},
+        ]}>
         <View style={style.iconLeft}>{leftIcon && <IconComp name={leftIcon} />}</View>
         <View style={style.text}>
-          <CustomText text={title} type="primary" />
+          <CustomText text={title} variant={type} />
         </View>
         <View style={style.iconRight}>{rightIcon && <IconComp name={rightIcon} />}</View>
       </View>
